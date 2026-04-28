@@ -125,7 +125,7 @@ const StudentProfile = () => {
             }}>
               <input type="file" onChange={uploadPhotoHandler} accept="image/*" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 10 }} title="Upload new photo" />
               <img 
-                src={profile.profilePhoto ? `http://localhost:5000${profile.profilePhoto}` : `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'Student'}&backgroundColor=1e293b`} 
+                src={profile.profilePhoto ? (profile.profilePhoto.startsWith('http') ? profile.profilePhoto : `${import.meta.env.VITE_API_URL?.replace('/api/v1', '') || ''}${profile.profilePhoto}`) : `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'Student'}&backgroundColor=1e293b`} 
                 alt="Profile" 
                 style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', background: '#0f172a' }} 
               />
