@@ -8,8 +8,12 @@ const router = express.Router();
 
 // Ensure upload dir exists safely
 const uploadDir = 'uploads/';
-if (!fs.existsSync(uploadDir)){
-    fs.mkdirSync(uploadDir);
+try {
+    if (!fs.existsSync(uploadDir)){
+        fs.mkdirSync(uploadDir);
+    }
+} catch (err) {
+    console.warn('Could not create uploads directory (expected in read-only environments):', err.message);
 }
 
 // Mongoose-friendly storage generator

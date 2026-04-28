@@ -90,8 +90,11 @@ process.on('unhandledRejection', (err) => {
   // Don't exit in dev — log and continue
 });
 
-const PORT = process.env.PORT || 5000;
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`✅ Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+  });
+}
 
-app.listen(PORT, () => {
-  console.log(`✅ Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-});
+module.exports = app;
