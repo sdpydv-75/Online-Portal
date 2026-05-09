@@ -84,14 +84,14 @@ const Chatbot = () => {
           onClick={() => setIsOpen(true)}
           style={{
             position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 1000,
-            background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', color: 'white',
+            background: 'linear-gradient(135deg, #0d4c3c, #7ba05b)', color: 'white',
             width: '60px', height: '60px', borderRadius: '50%', border: 'none',
-            boxShadow: '0 10px 25px rgba(139,92,246,0.4)', cursor: 'pointer',
+            boxShadow: '0 10px 25px rgba(13, 76, 60, 0.4)', cursor: 'pointer',
             display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1.8rem',
             transition: 'transform 0.3s ease'
           }}
           onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'}
-          onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+          onMouseOut={e => e.currentTarget.style.scale = '1'}
         >
           💬
         </button>
@@ -100,12 +100,12 @@ const Chatbot = () => {
       {isOpen && (
         <div style={{
           position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 1000,
-          width: '350px', height: '500px', background: '#1e293b', border: '1px solid rgba(255,255,255,0.1)',
+          width: '350px', height: '500px', background: '#f4f1eb', border: '1px solid rgba(13, 76, 60, 0.1)',
           borderRadius: '16px', overflow: 'hidden', display: 'flex', flexDirection: 'column',
-          boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)', animation: 'fadeInUp 0.3s ease'
+          boxShadow: '0 25px 50px -12px rgba(13, 76, 60, 0.3)', animation: 'fadeInUp 0.3s ease'
         }}>
           {/* Header */}
-          <div style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ background: 'linear-gradient(135deg, #0d4c3c, #7ba05b)', padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <span style={{ fontSize: '1.5rem' }}>🤖</span>
               <h3 style={{ color: 'white', margin: 0, fontSize: '1.1rem', fontWeight: '700' }}>Career Assistant</h3>
@@ -121,11 +121,12 @@ const Chatbot = () => {
               }}>
                 <div style={{
                   maxWidth: '80%', padding: '0.8rem 1rem', borderRadius: '12px', fontSize: '0.9rem', lineHeight: '1.5',
-                  background: msg.sender === 'user' ? '#3b82f6' : 'rgba(255,255,255,0.05)',
-                  color: msg.sender === 'user' ? '#fff' : '#cbd5e1',
+                  background: msg.sender === 'user' ? '#0d4c3c' : '#ffffff',
+                  color: msg.sender === 'user' ? '#fff' : '#2d5a4a',
                   borderBottomRightRadius: msg.sender === 'user' ? '0' : '12px',
                   borderBottomLeftRadius: msg.sender === 'bot' ? '0' : '12px',
-                  border: msg.sender === 'bot' ? '1px solid rgba(255,255,255,0.1)' : 'none'
+                  border: msg.sender === 'bot' ? '1px solid #e2e8f0' : 'none',
+                  boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
                 }}>
                   {msg.text}
                 </div>
@@ -135,15 +136,15 @@ const Chatbot = () => {
           </div>
 
           {/* Input Area */}
-          <form onSubmit={handleSend} style={{ padding: '1rem', background: 'rgba(0,0,0,0.2)', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', gap: '0.5rem' }}>
+          <form onSubmit={handleSend} style={{ padding: '1rem', background: '#fff', borderTop: '1px solid #e2e8f0', display: 'flex', gap: '0.5rem' }}>
             <input 
               type="text" 
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your question..." 
-              style={{ flex: 1, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', padding: '0.8rem', borderRadius: '8px', outline: 'none' }}
+              style={{ flex: 1, background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0d4c3c', padding: '0.8rem', borderRadius: '8px', outline: 'none' }}
             />
-            <button type="submit" style={{ background: '#3b82f6', color: 'white', border: 'none', padding: '0 1rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>
+            <button type="submit" style={{ background: '#0d4c3c', color: 'white', border: 'none', padding: '0 1rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>
               Send
             </button>
           </form>

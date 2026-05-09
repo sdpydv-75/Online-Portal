@@ -98,12 +98,10 @@ const Navbar = () => {
         {/* Left Side: Logo & Links */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
           <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }} onClick={() => setIsMenuOpen(false)}>
-            <img src="/image.png" alt="ITM Logo" style={{ height: '48px', marginRight: '1rem', borderRadius: '50%', boxShadow: '0 0 20px rgba(59,130,246,0.2)' }} />
-            <div className="logo-text" style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: '1.25rem', fontWeight: '900', background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', letterSpacing: '0.5px', lineHeight: '1.2', whiteSpace: 'nowrap' }}>
-                ITM PLACEMENT CELL
-              </span>
-              <span style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: '700', letterSpacing: '0.4px', whiteSpace: 'nowrap', textTransform: 'uppercase' }}>Institute of Technology & Management</span>
+            <img src="/image.png" alt="ITM Logo" style={{ height: '45px', borderRadius: '50%', boxShadow: '0 0 15px rgba(123, 160, 91, 0.4)', border: '1px solid rgba(255,255,255,0.1)' }} />
+            <div className="logo-text" style={{ marginLeft: '0.8rem' }}>
+              <div style={{ fontWeight: '900', color: '#f4f1eb', fontSize: '1.1rem', letterSpacing: '0.5px' }}>ITM PLACEMENT CELL</div>
+              <div style={{ fontSize: '0.65rem', color: '#7ba05b', fontWeight: '700', letterSpacing: '0.5px' }}>INSTITUTE OF TECHNOLOGY & MANAGEMENT</div>
             </div>
           </Link>
 
@@ -130,11 +128,6 @@ const Navbar = () => {
                     <div className="nav-hover-orange" onMouseEnter={() => setInternshipTab('locations')} onClick={() => setInternshipTab('locations')} style={{ padding: '0.8rem 1.5rem', background: internshipTab === 'locations' ? 'rgba(234,88,12,0.1)' : 'transparent', color: internshipTab === 'locations' ? '#ea580c' : '#94a3b8', fontWeight: internshipTab === 'locations' ? '500' : 'normal', cursor: 'pointer' }}>Top Locations</div>
                     <div className="nav-hover-orange" onMouseEnter={() => setInternshipTab('profile')} onClick={() => setInternshipTab('profile')} style={{ padding: '0.8rem 1.5rem', background: internshipTab === 'profile' ? 'rgba(234,88,12,0.1)' : 'transparent', color: internshipTab === 'profile' ? '#ea580c' : '#94a3b8', fontWeight: internshipTab === 'profile' ? '500' : 'normal', cursor: 'pointer' }}>Profile</div>
                     <div className="nav-hover-orange" onMouseEnter={() => setInternshipTab('categories')} onClick={() => setInternshipTab('categories')} style={{ padding: '0.8rem 1.5rem', background: internshipTab === 'categories' ? 'rgba(234,88,12,0.1)' : 'transparent', color: internshipTab === 'categories' ? '#ea580c' : '#94a3b8', fontWeight: internshipTab === 'categories' ? '500' : 'normal', cursor: 'pointer' }}>Top Categories</div>
-                    <div className="nav-hover-orange" onClick={() => handleKeywordSearch('All Internships')} style={{ padding: '0.8rem 1.5rem', color: '#94a3b8', cursor: 'pointer' }}>Explore More Internships</div>
-                    <div className="nav-hover-orange" onClick={() => navigate('/online-degree')} style={{ padding: '0.8rem 1.5rem', color: '#94a3b8', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                      Online Placement Courses
-                      <span style={{ background: '#ea580c', color: '#fff', fontSize: '0.65rem', padding: '0.1rem 0.3rem', borderRadius: '4px', fontWeight: '700', marginLeft: '0.4rem' }}>NEW</span>
-                    </div>
                     <div className="nav-hover-orange" onClick={() => navigate('/certified-internship')} style={{ padding: '0.8rem 1.5rem', color: '#94a3b8', cursor: 'pointer', display: 'flex', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: '0.5rem', paddingTop: '1rem' }}>
                       ITM Certified Internship
                       <span style={{ background: '#3b82f6', color: '#fff', fontSize: '0.65rem', padding: '0.1rem 0.3rem', borderRadius: '4px', fontWeight: '700', marginLeft: '0.4rem' }}>PREMIUM</span>
@@ -176,10 +169,6 @@ const Navbar = () => {
                     <div className="nav-hover-orange" onMouseEnter={() => setJobsTab('categories')} onClick={() => setJobsTab('categories')} style={{ padding: '0.8rem 1.5rem', background: jobsTab === 'categories' ? 'rgba(234,88,12,0.1)' : 'transparent', color: jobsTab === 'categories' ? '#ea580c' : '#94a3b8', fontWeight: jobsTab === 'categories' ? '500' : 'normal', cursor: 'pointer' }}>Top Categories</div>
                     <div className="nav-hover-orange" onClick={() => handleKeywordSearch('Fresher Jobs')} style={{ padding: '0.8rem 1.5rem', color: '#94a3b8', cursor: 'pointer' }}>Fresher Jobs</div>
                     <div className="nav-hover-orange" onClick={() => handleKeywordSearch('Explore More Jobs')} style={{ padding: '0.8rem 1.5rem', color: '#94a3b8', cursor: 'pointer' }}>Explore More Jobs</div>
-                    <div className="nav-hover-orange" onClick={() => navigate('/online-degree')} style={{ padding: '0.8rem 1.5rem', color: '#94a3b8', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                      Online Placement Courses
-                      <span style={{ background: '#ea580c', color: '#fff', fontSize: '0.65rem', padding: '0.1rem 0.3rem', borderRadius: '4px', fontWeight: '700', marginLeft: '0.4rem' }}>NEW</span>
-                    </div>
                   </div>
                   <div style={{ width: '55%', padding: '1.2rem 1.5rem' }}>
                     <div style={{ display: 'grid', gap: '1.1rem' }}>
@@ -243,15 +232,15 @@ const Navbar = () => {
         </div>
 
         {/* Hamburger Button */}
-        <button 
+        <button
           className="hamburger"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          style={{ 
-            display: 'none', 
-            background: 'transparent', 
-            border: 'none', 
-            color: '#fff', 
-            fontSize: '1.5rem', 
+          style={{
+            display: 'none',
+            background: 'transparent',
+            border: 'none',
+            color: '#fff',
+            fontSize: '1.5rem',
             cursor: 'pointer',
             padding: '0.5rem'
           }}
@@ -269,18 +258,20 @@ const Navbar = () => {
                   <Link to="/profile" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', color: '#94a3b8', fontWeight: '500', fontSize: '0.95rem', transition: 'color 0.2s' }}>Portfolio</Link>
                 </>
               )}
-              {(user.role === 'recruiter' || user.role === 'admin') && (
+              {user.role === 'recruiter' && (
                 <>
-                  <Link to="/post-job" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', color: '#94a3b8', fontWeight: '500', fontSize: '0.95rem' }}>Post Job</Link>
-                  <Link to="/applicants" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', color: '#94a3b8', fontWeight: '500', fontSize: '0.95rem' }}>Candidates</Link>
+                  <Link to="/post-job" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', color: '#94a3b8', fontWeight: '500', fontSize: '0.95rem', transition: 'color 0.2s' }}>Post Job</Link>
+                  <Link to="/applicants" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', color: '#94a3b8', fontWeight: '500', fontSize: '0.95rem', transition: 'color 0.2s' }}>Candidates</Link>
                 </>
               )}
               {user.role === 'admin' && (
-                <Link to="/admin" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', color: '#fff', padding: '0.4rem 1rem', borderRadius: '8px', fontWeight: '700', fontSize: '0.85rem', boxShadow: '0 2px 10px rgba(59,130,246,0.3)' }}>⚙️ Admin</Link>
+                <Link to="/admin" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', background: 'linear-gradient(135deg, #0d4c3c, #7ba05b)', color: '#fff', padding: '0.4rem 1.2rem', borderRadius: '10px', fontWeight: '700', fontSize: '0.85rem', boxShadow: '0 4px 12px rgba(13, 76, 60, 0.3)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <span style={{ fontSize: '1.1rem' }}>⚙️</span> Admin Panel
+                </Link>
               )}
 
               <div style={{ height: '24px', width: '1px', background: 'rgba(255,255,255,0.1)' }}></div>
-              <button onClick={handleLogout} style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', color: '#ef4444', padding: '0.4rem 1.2rem', borderRadius: '8px', fontWeight: '700', cursor: 'pointer', fontSize: '0.85rem' }}>
+              <button onClick={handleLogout} style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(13, 76, 60, 0.2)', color: '#ef4444', padding: '0.4rem 1.2rem', borderRadius: '8px', fontWeight: '700', cursor: 'pointer', fontSize: '0.85rem', transition: 'all 0.3s' }}>
                 Logout
               </button>
             </>
@@ -289,7 +280,7 @@ const Navbar = () => {
               <Link to="/login" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', border: '1px solid rgba(255,255,255,0.15)', color: '#f1f5f9', padding: '0.45rem 1.4rem', borderRadius: '10px', fontWeight: '700', fontSize: '0.9rem', transition: 'all 0.3s', background: 'rgba(255,255,255,0.03)' }}>
                 Login
               </Link>
-              <Link to="/register" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)', color: '#ffffff', padding: '0.5rem 1.5rem', borderRadius: '10px', fontWeight: '700', fontSize: '0.9rem', boxShadow: '0 4px 14px rgba(59,130,246,0.3)' }}>
+              <Link to="/register" onClick={() => setIsMenuOpen(false)} style={{ textDecoration: 'none', background: 'linear-gradient(135deg, #0d4c3c 0%, #7ba05b 100%)', color: '#ffffff', padding: '0.5rem 1.5rem', borderRadius: '10px', fontWeight: '700', fontSize: '0.9rem', boxShadow: '0 4px 14px rgba(13, 76, 60, 0.3)' }}>
                 Register
               </Link>
             </>
@@ -298,6 +289,7 @@ const Navbar = () => {
       </div>
       <style>{`
         * { box-sizing: border-box; }
+        .nav-hover-green:hover { color: #7ba05b !important; }
         @media (max-width: 1024px) {
           .desktop-nav { display: none !important; }
           .logo-text { display: none !important; }

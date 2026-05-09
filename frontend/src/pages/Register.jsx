@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -8,6 +8,14 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const { register } = useContext(AuthContext);
   const navigate = useNavigate();
+  const query = new URLSearchParams(window.location.search);
+  const initialRole = query.get('role') || 'student';
+
+  useEffect(() => {
+    if (initialRole && (initialRole === 'student' || initialRole === 'recruiter')) {
+      setFormData(prev => ({ ...prev, role: initialRole }));
+    }
+  }, [initialRole]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +47,11 @@ const Register = () => {
           background: #0b111e;
           padding: 2rem 1rem;
           font-family: 'Poppins', sans-serif;
+        }
+        @media (max-width: 768px) {
+          .reg-page-wrap {
+            background: transparent !important;
+          }
         }
 
         .reg-card {
@@ -324,7 +337,6 @@ const Register = () => {
                 <select className="reg-select" onChange={e => setFormData({...formData, role: e.target.value})}>
                   <option value="student">Student looking for jobs</option>
                   <option value="recruiter">Employer / Recruiter</option>
-                  <option value="admin">Administrator / Admin</option>
                 </select>
               </div>
 

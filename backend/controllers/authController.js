@@ -25,6 +25,14 @@ const registerUser = async (req, res) => {
   try {
     const { name, email, password, role, companyName } = req.body;
 
+    // Prevent registering as admin
+    if (role === 'admin') {
+      return res.status(403).json({
+        success: false,
+        error: 'Administrator registration is restricted. Please contact the system owner.'
+      });
+    }
+
     // Create user
     const user = await User.create({
       name,

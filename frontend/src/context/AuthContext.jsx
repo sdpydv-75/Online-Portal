@@ -31,7 +31,9 @@ export const AuthProvider = ({ children }) => {
     
     // Fetch user details immediately after login
     const userRes = await api.get('/auth/me');
-    setUser(userRes.data.data);
+    const userData = userRes.data.data;
+    setUser(userData);
+    return userData; // Return the data so Login.jsx can use it
   };
 
   const register = async (userData) => {

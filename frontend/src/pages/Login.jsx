@@ -9,7 +9,8 @@ const Login = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  const { login } = useContext(AuthContext);
+  const [selectedRole, setSelectedRole] = useState('student');
+  const { login, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,13 +18,20 @@ const Login = () => {
     setLoading(true);
     setError('');
     try {
-      await login(email, password);
+      const loggedInUser = await login(email, password);
+      
+      // Strict role check: If user role doesn't match selected role, logout and error
+      if (loggedInUser.role !== selectedRole) {
+        logout(); // Force logout if role mismatch
+        throw new Error(`This account is registered as a ${loggedInUser.role}, not as a ${selectedRole}. Please select the correct tab above.`);
+      }
+      
       navigate('/dashboard');
     } catch (err) {
       if (err.code === 'ERR_NETWORK') {
         setError('Cannot connect to server. Ensure backend is running.');
       } else {
-        setError(err.response?.data?.error || 'Invalid credentials');
+        setError(err.message || err.response?.data?.error || 'Invalid credentials');
       }
     }
     setLoading(false);
@@ -43,16 +51,53 @@ const Login = () => {
           padding: 2rem 1rem;
           font-family: 'Poppins', sans-serif;
         }
+        @media (max-width: 768px) {
+          .login-page-wrap {
+            background: transparent !important;
+          }
+        }
 
         .login-card {
           display: flex;
           width: 100%;
           max-width: 900px;
-          min-height: 540px;
+          min-height: 580px;
           border-radius: 28px;
           overflow: hidden;
           box-shadow: 0 30px 80px rgba(0,0,0,0.5);
         }
+
+        /* ── Role Switcher ── */
+        .role-tabs {
+          display: flex;
+          background: rgba(15, 23, 42, 0.4);
+          padding: 0.4rem;
+          border-radius: 14px;
+          margin-bottom: 2rem;
+          gap: 0.5rem;
+        }
+        .role-tab {
+          flex: 1;
+          padding: 0.6rem;
+          border: none;
+          background: transparent;
+          color: #94a3b8;
+          font-size: 0.8rem;
+          font-weight: 700;
+          cursor: pointer;
+          border-radius: 10px;
+          transition: all 0.3s;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+        .role-tab.active {
+          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+          color: #fff;
+          box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+        }
+        .role-tab.active.student { background: linear-gradient(135deg, #10b981, #34d399); }
+        .role-tab.active.recruiter { background: linear-gradient(135deg, #f97316, #fbbf24); }
+        .role-tab.active.admin { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
 
         /* ── Left Panel (Form) ── */
         .login-left {
@@ -89,6 +134,7 @@ const Login = () => {
           font-size: 2rem;
           margin-bottom: 1.4rem;
           box-shadow: 0 8px 24px rgba(52,211,153,0.3);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .login-title {
@@ -300,9 +346,26 @@ const Login = () => {
 
           {/* ── Left: Form ── */}
           <div className="login-left">
-            <div className="login-avatar">👤</div>
-            <h1 className="login-title">WELCOME</h1>
-            <p className="login-subtitle">Sign in to your placement account</p>
+            <div className="role-tabs">
+              <button className={`role-tab ${selectedRole === 'student' ? 'active student' : ''}`} onClick={() => setSelectedRole('student')}>Student</button>
+              <button className={`role-tab ${selectedRole === 'recruiter' ? 'active recruiter' : ''}`} onClick={() => setSelectedRole('recruiter')}>Recruiter</button>
+              <button className={`role-tab ${selectedRole === 'admin' ? 'active admin' : ''}`} onClick={() => setSelectedRole('admin')}>Admin</button>
+            </div>
+
+            <div className="login-avatar" style={{ 
+              background: selectedRole === 'student' ? 'linear-gradient(135deg, #10b981, #34d399)' : 
+                         selectedRole === 'recruiter' ? 'linear-gradient(135deg, #f97316, #fbbf24)' : 
+                         'linear-gradient(135deg, #3b82f6, #8b5cf6)' 
+            }}>
+              {selectedRole === 'student' ? '🎓' : selectedRole === 'recruiter' ? '💼' : '⚙️'}
+            </div>
+            
+            <h1 className="login-title">{selectedRole === 'admin' ? 'ADMIN LOGIN' : 'WELCOME'}</h1>
+            <p className="login-subtitle">
+              {selectedRole === 'student' ? 'Sign in to access student dashboard' : 
+               selectedRole === 'recruiter' ? 'Sign in to post jobs & hire talent' : 
+               'Sign in to ITM Control Panel'}
+            </p>
 
             {error && <div className="login-error">{error}</div>}
 

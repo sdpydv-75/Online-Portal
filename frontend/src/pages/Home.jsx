@@ -5,7 +5,10 @@ const Home = () => {
     <div style={{
       minHeight: 'calc(100vh - 78px)',
       width: '100%',
-      background: 'radial-gradient(ellipse at bottom left, #0f1123 0%, #17153b 60%, #1e1b4b 100%)',
+      backgroundColor: '#f4f1eb',
+      backgroundImage: 'url("/bg-nature.png")',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -14,12 +17,12 @@ const Home = () => {
       overflow: 'hidden'
     }}>
 
-      {/* Decorative stars / dots overlay */}
+      {/* Decorative dots overlay */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-        backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-        opacity: 0.08,
+        backgroundImage: 'radial-gradient(#0d4c3c 1px, transparent 1px)',
+        backgroundSize: '60px 60px',
+        opacity: 0.05,
         pointerEvents: 'none',
         zIndex: 0
       }}></div>
@@ -31,17 +34,12 @@ const Home = () => {
         top: '-10%',
         width: '55vw',
         height: '120vh',
-        background: 'linear-gradient(180deg, rgba(82, 92, 235, 0.4) 0%, rgba(139, 92, 246, 0.2) 100%)',
+        background: 'linear-gradient(180deg, rgba(123, 160, 91, 0.2) 0%, rgba(13, 76, 60, 0.1) 100%)',
         borderTopLeftRadius: '50% 100%',
         borderBottomLeftRadius: '50% 100%',
-        boxShadow: 'inset 20px 0 60px rgba(255,255,255,0.05)',
         zIndex: 0,
         pointerEvents: 'none'
       }}></div>
-
-      {/* Background glow effects */}
-      <div style={{ position: 'absolute', top: '20%', right: '15%', width: '350px', height: '350px', background: 'rgba(124, 58, 237, 0.25)', filter: 'blur(100px)', borderRadius: '50%', zIndex: 0, pointerEvents: 'none' }}></div>
-      <div style={{ position: 'absolute', bottom: '10%', left: '15%', width: '400px', height: '400px', background: 'rgba(59, 130, 246, 0.15)', filter: 'blur(120px)', borderRadius: '50%', zIndex: 0, pointerEvents: 'none' }}></div>
 
       <div style={{
         position: 'relative',
@@ -65,11 +63,11 @@ const Home = () => {
             lineHeight: '1.15',
             marginBottom: '1.5rem',
             letterSpacing: '-0.02em',
-            color: '#ffffff'
+            color: '#0d4c3c'
           }}>
             Your Dream <br />
             <span style={{
-              background: 'linear-gradient(90deg, #4f46e5, #8b5cf6, #c084fc)',
+              background: 'linear-gradient(90deg, #0d4c3c, #7ba05b)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               display: 'inline-block'
@@ -79,53 +77,54 @@ const Home = () => {
 
           <p className="animate-fade-in-up" style={{
             fontSize: '1.15rem',
-            color: '#cbd5e1',
+            color: '#2d5a4a',
             marginBottom: '2.5rem',
             maxWidth: '500px',
             lineHeight: '1.7',
             animationDelay: '0.1s',
-            fontWeight: '400'
+            fontWeight: '500'
           }}>
             Most trusted placement platform connecting fresh talent with top companies. Find internships, jobs & campus drives.
           </p>
 
           <div className="animate-fade-in-up" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', animationDelay: '0.2s' }}>
             <Link to="/jobs" style={{
-              padding: '0.9rem 2rem',
+              padding: '1rem 2.5rem',
               fontSize: '1.05rem',
-              fontWeight: '600',
-              borderRadius: '8px',
-              background: '#4f46e5',
+              fontWeight: '800',
+              borderRadius: '12px',
+              background: 'linear-gradient(135deg, #0d4c3c 0%, #2d5a4a 100%)',
               color: 'white',
               textDecoration: 'none',
-              boxShadow: '0 0 20px rgba(79, 70, 229, 0.4), inset 0 1px 1px rgba(255,255,255,0.2)',
+              boxShadow: '0 10px 20px rgba(13, 76, 60, 0.25)',
               display: 'inline-flex',
               alignItems: 'center',
               transition: 'all 0.3s ease'
             }}
-              onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 0 25px rgba(79, 70, 229, 0.6), inset 0 1px 1px rgba(255,255,255,0.2)'; e.currentTarget.style.background = '#6366f1'; }}
-              onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(79, 70, 229, 0.4), inset 0 1px 1px rgba(255,255,255,0.2)'; e.currentTarget.style.background = '#4f46e5'; }}
+              onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 15px 30px rgba(13, 76, 60, 0.4)'; }}
+              onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 20px rgba(13, 76, 60, 0.25)'; }}
             >
               Get Started →
             </Link>
 
             <Link to="/jobs" style={{
-              padding: '0.9rem 2rem',
+              padding: '1rem 2.5rem',
               fontSize: '1.05rem',
-              fontWeight: '500',
-              borderRadius: '8px',
-              background: 'transparent',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: 'var(--text-white)',
+              fontWeight: '600',
+              borderRadius: '12px',
+              background: 'white',
+              border: '1px solid #e2e8f0',
+              color: '#0d4c3c',
               textDecoration: 'none',
               display: 'inline-flex',
               alignItems: 'center',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
               transition: 'all 0.3s ease'
             }}
-              onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)'; }}
-              onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)'; }}
+              onMouseOver={(e) => { e.currentTarget.style.background = '#f8fafc'; e.currentTarget.style.borderColor = '#0d4c3c'; }}
+              onMouseOut={(e) => { e.currentTarget.style.background = 'white'; e.currentTarget.style.borderColor = '#e2e8f0'; }}
             >
-              Browse Jobs →
+              Browse Jobs
             </Link>
           </div>
         </div>
@@ -144,7 +143,7 @@ const Home = () => {
               objectPosition: 'center top',
               zIndex: 2,
               borderRadius: '3rem',
-              boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 50px rgba(139, 92, 246, 0.3)',
+              boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 50px rgba(13, 76, 60, 0.2)',
               border: '4px solid rgba(255, 255, 255, 0.05)',
               WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
               maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)'
@@ -159,7 +158,7 @@ const Home = () => {
             left: '8%',
             padding: '0.55rem 1.1rem',
             borderRadius: '24px',
-            background: 'rgba(30, 27, 75, 0.9)',
+            background: 'rgba(13, 76, 60, 0.9)',
             border: '1px solid rgba(255,255,255,0.05)',
             display: 'flex',
             alignItems: 'center',
